@@ -1,0 +1,11 @@
+<div class="about">
+  <h2>À propos de moi</h2>
+  
+  <!-- Animation d'apparition des détails -->
+  <div class="details" *ngFor="let detail of details">
+    <!-- Utilisation du sous-composant 'app-detail' -->
+    <app-detail 
+      [detail]="detail">
+    </app-detail>
+  </div>
+</div>

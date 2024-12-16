@@ -1,0 +1,23 @@
+<section class="skills">
+  <h2>Mes Compétences</h2>
+  
+  <div class="skills-list">
+    <div *ngFor="let skill of skills" class="skill-item">
+      <!-- Icône de compétence -->
+      <i class="fas fa-laptop-code skill-icon"></i> 
+
+      <!-- Affichage des compétences -->
+      <div class="skill-details">
+        <span class="skill-name">{{ skill.name }}</span>
+        
+        <!-- Barre de progression -->
+        <div class="progress-bar">
+          <div class="progress" [style.width]="skill.level + '%'" [ngClass]="{ 'high': skill.level > 80, 'medium': skill.level > 40 && skill.level <= 80, 'low': skill.level <= 40 }"></div>
+        </div>
+        
+        <!-- Niveau de la compétence -->
+        <span class="skill-level">{{ skill.level }}%</span>
+      </div>
+    </div>
+  </div>
+</section>
