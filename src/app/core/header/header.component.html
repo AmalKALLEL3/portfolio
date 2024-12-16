@@ -1,21 +1,36 @@
-<header>
-  <nav class="navbar">
-    <div class="logo">
-      <a routerLink="/" aria-label="Retour à la page d'accueil">Mon Portfolio</a>
-    </div>
-    
-    <!-- Icone du menu mobile -->
-    <div class="menu-icon" (click)="toggleMenu()" aria-label="Ouvrir le menu">
-      <i class="fas fa-bars"></i>
-    </div>
 
-    <!-- Liens de navigation -->
-    <ul class="nav-links" [class.active]="menuActive">
-      <li><a routerLink="/" routerLinkActive="active" aria-label="Page d'accueil">Accueil</a></li>
-      <li><a routerLink="/about" routerLinkActive="active" aria-label="À propos">À propos</a></li>
-      <li><a routerLink="/skills" routerLinkActive="active" aria-label="Compétences">Compétences</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active" aria-label="Projets">Projets</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active" aria-label="Contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header class="header" data-header>
+    <div class="container">
+
+      <a routerLink="" > Portfolio
+      </a>
+
+      <nav class="navbar" data-navbar [ngClass]="status ? 'active' : ''">
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a routerLink="/about" class="label-lg navbar-link has-after" routerLinkActive="active">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a routerLink="/skills"  class="label-lg navbar-link has-after" routerLinkActive="active">Skills</a>
+          </li>
+
+          <li class="navbar-item">
+            <a routerLink="/projects"  class="label-lg navbar-link has-after" routerLinkActive="active">projects</a>
+          </li>
+
+          <li class="navbar-item">
+            <a routerLink="/contact"  class="label-lg navbar-link has-after" routerLinkActive="active">Contact</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <a routerLink="/contact" class="btn btn-primary">Contact Now</a>
+
+      <button class="nav-toggle-btn" aria-label="menu" data-nav-toggler (click)="addToggle()">
+      </button>
+
+    </div>
+  </header>

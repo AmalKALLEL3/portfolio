@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  menuActive = false;
-
-  toggleMenu() {
-    this.menuActive = !this.menuActive;
-  }
+//Sidebar toggle show hide function
+status = false;
+addToggle()
+{
+  this.status = !this.status;       
+}
 }

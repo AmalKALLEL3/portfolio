@@ -9,4 +9,7 @@ export class ContactComponent {
   onSubmit() {
     alert('Merci pour votre message. Je vous répondrai rapidement.');
   }
+
+  ngOnInit() {}
+
 }
