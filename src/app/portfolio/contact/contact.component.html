@@ -1,87 +1,106 @@
 <main>
   <article>
-
-    <!-- 
-      - #CONTACT
-    -->
+    <!-- CONTACT SECTION -->
     <section class="section contact has-bg-image" aria-labelledby="contact-label"
       style="background-image: url('./assets/images/contact-bg.png')">
       <div class="container">
 
-        <form class="form-container" #contactForm="ngForm" (ngSubmit)="onSubmit()">
-
-          <h2 class="headline-sm" id="contact-label">contact-us</h2>
+        <!-- Contact Form -->
+        <form class="form-container" #contactForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <h2 class="headline-sm text-center" id="contact-label">Contact Us</h2>
 
           <div class="wrapper">
 
+            <!-- First Name Field -->
             <div>
-              <label for="name" class="label">First name</label>
-
-              <input type="text" name="name" id="name" placeholder="Name *" required class="input-field">
+              <label for="name" class="label">First Name</label>
+              <input type="text" name="name" id="name" placeholder="Name *" 
+                required 
+                class="input-field" 
+                [(ngModel)]="formData.name" 
+                #name="ngModel">
+              <div *ngIf="name.invalid && name.touched" class="error-message">
+                First name is required.
+              </div>
             </div>
 
+            <!-- Email Field -->
             <div>
-              <label for="email" class="label">Your Email </label>
-
-              <input type="email" name="email" id="email" placeholder="Email *" required class="input-field">
+              <label for="email" class="label">Your Email</label>
+              <input type="email" name="email" id="email" placeholder="Email *" 
+                required 
+                email
+                class="input-field" 
+                [(ngModel)]="formData.email" 
+                #email="ngModel">
+              <div *ngIf="email.invalid && email.touched" class="error-message">
+                A valid email is required.
+              </div>
             </div>
 
           </div>
 
+          <!-- Subject Field -->
           <label for="subject" class="label">Subject</label>
-          <input type="text" name="subject" id="subject" placeholder="Subject *" class="input-field">
+          <input type="text" name="subject" id="subject" placeholder="Subject *" 
+            required 
+            class="input-field" 
+            [(ngModel)]="formData.subject" 
+            #subject="ngModel">
+          <div *ngIf="subject.invalid && subject.touched" class="error-message">
+            Subject is required.
+          </div>
 
-          <label for="message" class="label">Your message </label>
-          <textarea name="message" id="message" placeholder="Your message *" required class="input-field"></textarea>
+          <!-- Message Field -->
+          <label for="message" class="label">Your Message</label>
+          <textarea name="message" id="message" placeholder="Your message *" 
+            required 
+            class="input-field" 
+            [(ngModel)]="formData.message" 
+            #message="ngModel"></textarea>
+          <div *ngIf="message.invalid && message.touched" class="error-message">
+            Message is required.
+          </div>
 
-          <a href="#" class="btn btn-tertiary">Send Message</a>
-
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
         </form>
 
+        <!-- Contact Details -->
         <div class="contact-content">
 
           <ul class="contact-list">
 
             <li class="contact-item">
-
               <div class="item-icon" style="background-color: hsl(177, 39%, 72%)">
+                <span class="material-icons">phone</span>
               </div>
-
               <div>
                 <p class="label-lg">Phone</p>
-
                 <a href="tel:+011236548096" class="body-lg">+0 123 456 789</a>
               </div>
-
             </li>
 
             <li class="contact-item">
-
               <div class="item-icon" style="background-color: hsl(41, 99%, 64%)">
+                <span class="material-icons">mail</span>
               </div>
-
               <div>
                 <p class="label-lg">Mail</p>
-
-                <a href="tel:info@domainname.com" class="body-lg">infojassa.com</a>
+                <a href="mailto:info@domainname.com" class="body-lg">info@domainname.com</a>
               </div>
-
             </li>
 
             <li class="contact-item">
-
               <div class="item-icon" style="background-color: hsl(19, 97%, 85%)">
+                <span class="material-icons">location_on</span>
               </div>
-
               <div>
                 <p class="label-lg">Visit My Studio</p>
-
                 <address class="body-lg">
-                  Ludhiana Punjab,
-                  India
+                  Ludhiana Punjab, India
                 </address>
               </div>
-
             </li>
 
           </ul>
@@ -90,6 +109,5 @@
 
       </div>
     </section>
-
   </article>
 </main>

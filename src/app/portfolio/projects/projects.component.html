@@ -1,40 +1,43 @@
-<main>
-  <article>
-    <section class="section portfolio" aria-labelledby="portfolio-label">
-      <div class="container">
+<section class="section portfolio" aria-labelledby="portfolio-label">
+  <div class="container">
 
-        <h2 class="section-title headline-md text-center" id="portfolio-label">Latest Projects</h2>
+    <h2 class="section-title headline-md text-center" id="portfolio-label">Latest Projects</h2>
 
-        <!-- Affichage d'un message de chargement -->
-        <div *ngIf="isLoading" class="loading">Chargement des projets...</div>
+    <!-- Vérifie que les données ne sont pas en cours de chargement et qu'il n'y a pas d'erreur -->
+    <ul class="portfolio-list" *ngIf="!isLoading && !errorMessage">
+      <!-- Parcourt la liste des projets -->
+      <li *ngFor="let project of projects">
+        <div class="portfolio-card">
+          <div class="card-banner img-holder" style="--width: 800; --height: 540;">
 
-        <!-- Affichage d'un message d'erreur -->
-        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+          <!-- Utilise le binding Angular pour afficher l'image dynamique -->
+          <img [src]="project.image" width="800" height="540" loading="lazy"
+            [alt]="project.title" class="img-cover">
 
-        <!-- Liste des projets -->
-        <ul class="portfolio-list" *ngIf="!isLoading && !errorMessage">
-          <li *ngFor="let project of projects">
-            <div class="portfolio-card">
+          <!-- Bouton d'action (laissez vide si non utilisé) -->
+          <a href="#" class="btn-icon" [attr.aria-label]="'More about ' + project.title"></a>
+        </div>
+          <div class="card-content">
 
-              <div class="card-banner img-holder" style="--width: 800; --height: 540;">
-                <img [src]="project.image" width="800" height="540" loading="lazy" [alt]="project.title"
-                  class="img-cover">
+            <!-- Affiche le titre du projet -->
+            <span class="chip label-md">{{ project.title }}</span>
 
-                <a [href]="project.link" class="btn-icon" [attr.aria-label]="'More about ' + project.title">
-                </a>
-              </div>
+            <!-- Affiche le titre une deuxième fois (optionnel) -->
+            <h3 class="title-md">{{ project.title }}</h3>
 
-              <div>
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-                <a [href]="project.link" target="_blank">Voir le projet</a>
-              </div>
+            <!-- Affiche la description du projet -->
+            <p class="card-text">
+              {{ project.description }}
+            </p>
 
-            </div>
-          </li>
-        </ul>
+            <!-- Lien vers le projet -->
+            <a [href]="project.link" class="btn btn-primary" target="_blank" rel="noopener">View Project</a>
 
-      </div>
-    </section>
-  </article>
-</main>
+          </div>
+
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</section>

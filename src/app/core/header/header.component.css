@@ -1,4 +1,10 @@
-/* Style pour la barre de navigation */
+header {
+  position: static; /* Le header défile avec le reste de la page (valeur par défaut) */
+  width: 100%;      /* (Optionnel) S'assure que le header prend toute la largeur de l'écran */
+  background-color: #ffffff; /* Fond blanc ou toute autre couleur de fond */
+}
+
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -7,6 +13,7 @@
   background-color: #fff;
   color: #fff;
   position: relative;
+  
 }
 
 .navbar .logo a {

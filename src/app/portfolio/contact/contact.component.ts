@@ -6,10 +6,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  // Form data
+  formData = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+
   onSubmit() {
-    alert('Merci pour votre message. Je vous répondrai rapidement.');
+    if (this.isFormValid()) {
+      alert('Merci pour votre message. Je vous répondrai rapidement.');
+      this.resetForm();
+    }
+  }
+
+  isFormValid(): boolean {
+    return (
+      this.formData.name.trim() !== '' &&
+      this.formData.email.trim() !== '' &&
+      this.formData.subject.trim() !== '' &&
+      this.formData.message.trim() !== ''
+    );
+  }
+
+  resetForm() {
+    this.formData = {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    };
   }
 
   ngOnInit() {}
-
 }
